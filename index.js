@@ -6,7 +6,7 @@ const mailer = require('./nodemailer');
 const { request, response } = require('express');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || '8080';
 
 app.use(bodyParser.json()); // for parsing application/json
 // app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -26,7 +26,7 @@ app.post('/sendmail', (request, response) => {
   let arrayPromise = [];
   for (let i=0; i<emails.length; i++) {    
     const message = {
-      from: 'Mailer test: <nodemailer123test@gmail.com>',
+      from: `Mailer test: <${mailer.from}>`,
       to: `${emails[i].email}`,
       subject: `${emails[i].subject}`,
       text: `${emails[i].body}`
