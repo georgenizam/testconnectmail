@@ -37,7 +37,7 @@ app.post('/sendmail', (request, response) => {
   }  
   Promise.all(arrayPromise)
         .then((results) => {          
-          let res = JSON.stringify({"results": results});   
+          let res = JSON.stringify({results});   
           console.log('res = ', res);
           return response.send(res);
         })
@@ -46,7 +46,7 @@ app.post('/sendmail', (request, response) => {
         })        
 });
 
-app.set("port", port);
+// app.set("port", port);
 app.listen(port, (err) => {
     if (err) {
         return console.log('something bad happened', err);
