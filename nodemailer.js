@@ -16,6 +16,9 @@ const mailer = {
           console.log("error");
           reject({        
             "lead": leadId,            
+            "fromEmail": message.from,            
+            "subject": message.subject,            
+            "htmlBody": message.text,            
             "status": 500
           });
         }
@@ -23,6 +26,9 @@ const mailer = {
           console.log("success");
           resolve({        
             "lead": leadId,            
+            "fromEmail": message.from,            
+            "subject": message.subject,            
+            "htmlBody": message.text,            
             "status": 200
           });
         }
