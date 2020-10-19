@@ -15,7 +15,8 @@ app.get('/', (request, response) => {
     response.send('ok');    
 });
 
-app.post('/sendmail', (request, response) => {  
+app.post('/sendmail', (request, response) => {    
+  console.log('request = ', request.body);
   let emails = request.body.emails;  
   mailer.saveNewCred( {
       user: request.body.cred.name,
@@ -36,7 +37,8 @@ app.post('/sendmail', (request, response) => {
   }  
   Promise.all(arrayPromise)
         .then((results) => {          
-          let res = JSON.stringify({"results": results});          
+          let res = JSON.stringify({"results": results});   
+          console.log('res = ', res);
           return response.send(res);
         })
         .catch((err) => {
