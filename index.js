@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mailer = require('./nodemailer');
@@ -6,7 +6,7 @@ const mailer = require('./nodemailer');
 const { request, response } = require('express');
 
 const app = express();
-const port = process.env.PORT || '8080';
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.json()); // for parsing application/json
 // app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -44,6 +44,7 @@ app.post('/sendmail', (request, response) => {
         })        
 });
 
+app.set("port", port);
 app.listen(port, (err) => {
     if (err) {
         return console.log('something bad happened', err);
